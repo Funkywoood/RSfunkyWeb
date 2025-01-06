@@ -1,0 +1,81 @@
+﻿@page
+@model MP133.Pages.Users.IndexModel
+
+@{
+    ViewData["Title"] = "Newsletter";
+}
+
+<h1>Newsletter</h1>
+<p>
+    <a asp-page="Create" style="text-decoration: none;">Neuer Eintrag</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Mitarbeiter[0].Vorname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mitarbeiter[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mitarbeiter[0].Strasse)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mitarbeiter[0].Nr)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mitarbeiter[0].PLZ)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mitarbeiter[0].Ort)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Mitarbeiter[0].Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mitarbeiter[0].Telefon)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Mitarbeiter) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vorname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td class="right">
+                @Html.DisplayFor(modelItem => item.Strasse)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nr)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PLZ)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ort)
+            </td>
+            <td class="right">
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td class="right">
+                @Html.DisplayFor(modelItem => item.Telefon)
+            </td>
+
+                <td class="right">
+                    <a asp-page="./Edit" asp-route-id="@item.Id" class="link-item">Bearbeiten</a>
+                    <span class="separator">|</span>
+                    <a asp-page="./Details" asp-route-id="@item.Id" class="link-item">Details</a>
+                    <span class="separator">|</span>
+                    <a asp-page="./Delete" asp-route-id="@item.Id" class="link-item">Löschen</a>
+                </td>
+        </tr>
+}
+    </tbody>
+</table>

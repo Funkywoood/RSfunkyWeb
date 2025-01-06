@@ -1,0 +1,105 @@
+﻿@page
+@model FilterModel
+@{
+    ViewData["Title"] = "Fahrzeugfilter";
+}
+
+    <h1>Fahrzeugfilter</h1>
+
+
+<form method="get" class="filter-form">
+    <div class="form-group">
+        <label for="Marke">Marke:</label>
+        <select id="Marke" name="FilterMarke" onchange="filterModelle()">
+            <option value="">Alle</option>
+            <option value="Audi" selected="@(Model.FilterMarke == "Audi" ? "selected" : null)">Audi</option>
+            <option value="BMW" selected="@(Model.FilterMarke == "BMW" ? "selected" : null)">BMW</option>
+            <option value="Tesla" selected="@(Model.FilterMarke == "Tesla" ? "selected" : null)">Tesla</option>
+            <option value="VW" selected="@(Model.FilterMarke == "VW" ? "selected" : null)">VW</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="Modell">Modell:</label>
+        <select id="Modell" name="FilterModell">
+            <option value="">Alle</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="Typ">Fahrzeugtyp:</label>
+        <select id="Typ" name="FilterFahrzeugtyp">
+            <option value="">Alle</option>
+            <option value="SUV" selected="@(Model.FilterFahrzeugtyp == "SUV" ? "selected" : null)">SUV</option>
+            <option value="Limousine" selected="@(Model.FilterFahrzeugtyp == "Limousine" ? "selected" : null)">Limousine</option>
+            <option value="Kombi" selected="@(Model.FilterFahrzeugtyp == "Kombi" ? "selected" : null)">Kombi</option>
+            <option value="Sport" selected="@(Model.FilterFahrzeugtyp == "Sport" ? "selected" : null)">Sport</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="MaxPreis">Max. Preis:</label>
+        <input type="number" id="MaxPreis" name="FilterMaxPreis" value="@Model.FilterMaxPreis" />
+    </div>
+
+    <div class="form-group">
+        <label for="Baujahr">Ab Baujahr:</label>
+        <input type="number" id="Baujahr" name="FilterBaujahr" value="@Model.FilterBaujahr" />
+    </div>
+
+    <div class="form-group button-group">
+        <button type="submit">Suche</button>
+    </div>
+</form>
+
+<script>
+    const modelle = {
+        "Audi": ["A4", "Q5"],
+        "BMW": ["X5", "3er"],
+        "Tesla": ["Model 3", "Model X"],
+        "VW": ["Golf", "Tiguan"]
+    };
+
+    function filterModelle() {
+        const marke = document.getElementById("Marke").value;
+        const modellSelect = document.getElementById("Modell");
+
+ 
+        modellSelect.innerHTML = '<option value="">Alle</option>';
+
+  
+        if (modelle[marke]) {
+            modelle[marke].forEach(modell => {
+                const option = document.createElement("option");
+                option.value = modell;
+                option.textContent = modell;
+                modellSelect.appendChild(option);
+            });
+        }
+    }
+
+    window.onload = filterModelle;
+</script>
+
+<hr />
+
+<h3>Suchergebnisse</h3>
+@if (Model.Fahrzeuge.Any())
+{
+    <div class="fahrzeug-grid">
+        @foreach (var fahrzeug in Model.Fahrzeuge)
+        {
+            <div class="fahrzeug-card">
+                <img src="@fahrzeug.BildUrl" alt="Bild von @fahrzeug.Marke @fahrzeug.Modell" />
+                <h4>@fahrzeug.Marke @fahrzeug.Modell</h4>
+                <p>Typ: @fahrzeug.Fahrzeugtyp</p>
+                <p>Baujahr: @fahrzeug.Baujahr</p>
+                <p>Preis: @fahrzeug.Preis.ToString("0") CHF</p>
+                <p>Status: @fahrzeug.Verfügbarkeit</p>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <p>Keine Fahrzeuge gefunden.</p>
+}

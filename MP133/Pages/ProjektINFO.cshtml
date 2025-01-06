@@ -1,0 +1,53 @@
+﻿@page
+@model PrivacyModel
+@{
+    ViewData["Title"] = "Projekt INFO";
+}
+
+<body>
+
+    <header>
+        <h1>@ViewData["Title"]</h1>
+    </header>
+
+    <div class="container">
+        <div class="content">
+            <p class="text" style="font-size: 19px;">
+                Diese Webseite wurde mit C# im ASP.NET Core Framework von Roland Spichtig, Softwareentwickler aus Kriens, Schweiz entwickelt. Das Projekt nutzt moderne Webtechnologien und Best Practices für eine effiziente und skalierbare Webanwendung. Die folgenden Programmiersprachen und Technologien kommen zum Einsatz:
+            </p>
+            <ul class="text" style="font-size: 19px;">
+                <li><strong>C#</strong> – Für die serverseitige Logik und die Interaktion mit der Datenbank über Entity Framework.</li>
+                <li><strong>JavaScript</strong> – Zur Verbesserung der Benutzerinteraktivität und für dynamische Elemente der Anwendung.</li>
+                <li><strong>HTML/ CSS</strong> – Für die Gestaltung der benutzerfreundlichen Oberfläche und das responsive Design.</li>
+                <li><strong>Bootstrap</strong> - Ein Open-Source-Framework zur Entwicklung responsiver und mobilfreundlicher Websites, das HTML, CSS und JavaScript-Vorlagen für Design-Elemente wie Buttons, Navigation und Layouts bereitstellt.</li>
+                <li><strong>Razor</strong> – Eine serverseitige View-Engine, die HTML und C# Code kombiniert, um dynamische Inhalte effizient in die Webanwendung zu integrieren und die Benutzeroberfläche zu generieren.</li>
+                <li><strong>T-SQL</strong> – Ist eine erweiterte Version von SQL, die zusätzliche Programmiersprachenfunktionen wie Variablen, Schleifen und Fehlerbehandlung bietet, um die Interaktion mit Microsoft SQL Server zu optimieren.</li>
+                <li><strong>Azure Cloud</strong> – Die Webseite wird auf Microsoft Azure Cloud als App Service gehostet, während eine Azure SQL-Datenbank zur Speicherung und Verwaltung der Daten verwendet wird.</li>
+            </ul>
+            <p class="text" style="font-size: 17px;">
+                Diese Technologien ermöglichen eine leistungsfähige, benutzerfreundliche und sichere Anwendung, die auf modernen Webstandards basiert.
+            </p>
+            <div class="content">
+                <h2>Fahrzeugfilter</h2>
+                <p class="text" style="font-size: 17px;">
+                    Das Fahrzeugfilter-Beispiel ermöglicht es den Benutzern, eine umfangreiche Fahrzeugdatenbank nach spezifischen Kriterien zu durchsuchen. Nutzer können Fahrzeuge anhand von Merkmalen wie Marke, Modell, Baujahr, Preis und weiteren Attributen filtern.
+                </p>
+                <div class="content">
+                    <h2>Newsletter</h2>
+                    <p class="text" style="font-size: 17px;">
+                        Das Newsletter-Beispiel ermöglicht es Benutzern, sich für regelmäßige Updates und Informationen zu registrieren. Einträge können mit CRUD erstellt, gelesen, bearbeitet und gelöscht werden.
+                        Bei der Passwort-Eingabe wird überprüft, dass Gross-/Kleinbuchstaben, Zahl, Sonderzeichen vorhanden sind. Bei korrekter Passwortbestätigung wird es als Hash verschlüsselt in der Datenbank gespeichert.
+                    </p>
+                    <div class="content">
+                        <h2>Kontaktformular</h2>
+                        <p class="text" style="font-size: 17px;">
+                            Das Kontaktformular-Beispiel ermöglicht es Benutzern, schnell und unkompliziert mit dem Administrator in Kontakt zu treten. Durch OAuth 2.0 wird eine sichere Verbindung zum Server hergestellt und reCAPTCHA v2 überprüft, ob der Benutzer ein Mensch ist.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
